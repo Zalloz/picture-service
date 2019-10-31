@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.434.0",
+    "basho-riak-client": "^2.4.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "enzyme-adapter-react-16": "^1.11.2",
@@ -35,7 +36,8 @@
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "style-loader": "^0.23.1",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
