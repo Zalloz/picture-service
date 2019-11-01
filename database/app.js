@@ -1,9 +1,8 @@
 var Riak = require('basho-riak-client');
 var async = require('async');
 var assert = require('assert');
-var logger = require('winston');
 
-var nodes = ['127.0.0.1:8087']
+var nodes = ['127.0.0.1:8087', '127.0.0.1:8088', '127.0.0.1:8089']
 
 var client = new Riak.Client(nodes, function (err, c) {
   if (err) {
@@ -18,7 +17,6 @@ var client = new Riak.Client(nodes, function (err, c) {
   });
 });
 
-
 var images = [
   {
     "id": "0",
@@ -29,7 +27,6 @@ var images = [
     "url": "https://picsum.photos/id/2/200/300"
   }
 ];
-
 
 var storeFuncs = [];
 images.forEach(function (image) {
@@ -61,8 +58,6 @@ client.fetchValue({ bucket: 'img', key: '0', convertToJs: true },
       var riakObj = rslt.values.shift();
       var image0 = riakObj.value;
       console.log('got here', image0)
-
-      logger.info("I found %s in 'img'", image0.id);
     }
   }
 );
