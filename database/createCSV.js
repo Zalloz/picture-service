@@ -7,24 +7,24 @@ const { Client } = require('pg');
 
 const agentTypes = ['listing', 'premier'];
 
-const CSVPath = path.join(__dirname, 'formSeedData.csv');
+const CSVPath = path.join(__dirname, 'pictureSeedData.csv');
 
 const postgres = new Client({
-    user: "nick",
+    user: "michaelcowden",
     host: "localhost",
-    database: "formservice"
+    database: "pictureservice"
 });
 postgres.connect();
 
 const generateData = async () => {
-    writeStream.write('id,agent_name,recent_sales,phone,agent_type,average_stars,num_ratings,agent_photo\n');
+    writeStream.write('url\n');
     for (let i = 1; i <= 10000000; i++) {
-        const photo = `https://picsum.photos/id/${faker.random.number({ min: 1, max: 1000 })}/200/300`;
-        if (!writeStream.write(`${i},${name},${sales},${phone},${type},${stars},${ratings},${photo}\n`)) {
+        const photo = `https://s3-us-west-1.amazonaws.com/photosformockzalloproject/${faker.random.number({ min: 1, max: 100 })}.jpg`;
+        if (!writeStream.write(`${photo}\n`)) {
             await new Promise(resolve => writeStream.once('drain', resolve));
         };
     };
-    postgres.query(`copy agents(id,agent_name,recent_sales,phone,agent_type,average_stars,num_ratings,agent_photo) FROM '${CSVPath}' DELIMITER ',' CSV HEADER;`, (err, res) => {
+    postgres.query(`copy images(url) FROM '${CSVPath}' DELIMITER ',' CSV HEADER;`, (err, res) => {
         if (err) {
             console.log('CSV Import error:', err);
         } else {
@@ -42,7 +42,7 @@ fs.access(CSVPath, accessErr => {
         console.log('File not accessed!')
         if (accessErr.errno === -2) {
             console.log('File doesnt exist, generating data...');
-            writeStream = fs.createWriteStream('formSeedData.csv', { flags: 'w' });
+            writeStream = fs.createWriteStream('pictureSeedData.csv', { flags: 'w' });
             generateData();
             return;
         } else {
@@ -60,7 +60,7 @@ fs.access(CSVPath, accessErr => {
                 return;
             } else {
                 console.log('File unlinked! Generating data...');
-                writeStream = fs.createWriteStream('formSeedData.csv', { flags: 'w' });
+                writeStream = fs.createWriteStream('pictureSeedData.csv', { flags: 'w' });
                 generateData();
                 return;
             };

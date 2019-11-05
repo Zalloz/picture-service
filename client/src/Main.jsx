@@ -3,14 +3,12 @@
 import React, { Component } from 'react';
 import Pictures from './components/Pictures.jsx';
 import Popup from './components/Popup.jsx';
-import style from './style.css';
-
-
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    // console.log(props.data)
     this.state = {
-      data: [],
+      data: this.props.data,
       popCurr: null,
       popCheck: false,
       prevSpot: null,
@@ -22,43 +20,42 @@ class App extends Component {
     this.currChange = this.currChange.bind(this);
     this.closePop = this.closePop.bind(this);
     this.houseView = this.houseView.bind(this);
-    window.addEventListener('house_view', this.houseView);
   }
   //fetching links on mount
-  componentWillMount() {
+  // componentWillMount() {
 
-    fetch('http://picturescomponent-env.rvmps3ehip.us-east-2.elasticbeanstalk.com/links', {
-      method: 'GET',
-    }).then(res => res.json())
-      .then((newData) => {
-        this.setState({
-          data: newData,
-        });
-      }).catch(err => console.log(err));
-  }
+  //   fetch('http://picturescomponent-env.rvmps3ehip.us-east-2.elasticbeanstalk.com/links', {
+  //     method: 'GET',
+  //   }).then(res => res.json())
+  //     .then((newData) => {
+  //       this.setState({
+  //         data: newData,
+  //       });
+  //     }).catch(err => console.log(err));
+  // }
   //method to refresh the picture component when other microservices trigger it with global event
   houseView() {
-    fetch('http://picturescomponent-env.rvmps3ehip.us-east-2.elasticbeanstalk.com/links', {
-      method: 'GET',
-    }).then(res => res.json())
-      .then((newData) => {
-        this.setState({
-          data: newData,
-        });
-      }).catch(err => console.log(err));
+    // fetch('http://picturescomponent-env.rvmps3ehip.us-east-2.elasticbeanstalk.com/links', {
+    //   method: 'GET',
+    // }).then(res => res.json())
+    //   .then((newData) => {
+    //     this.setState({
+    //       data: newData,
+    //     });
+    //   }).catch(err => console.log(err));
   }
 
   //method to set the index of where the pop up will start
   popCurrStart(e) {
-    if (window.innerWidth >= 995) {
-      this.setState({
-        popCurr: e.target.id,
-        popCheck: true,
-        prevSpot: this.rightRef.scrollLeft,
-      });
-      //this moves div to pop up if it is scrolled over
-      this.rightRef.scrollLeft -= 6750;
-    }
+    // if (window.innerWidth >= 995) {
+    //   this.setState({
+    //     popCurr: e.target.id,
+    //     popCheck: true,
+    //     prevSpot: this.rightRef.scrollLeft,
+    //   });
+    //   //this moves div to pop up if it is scrolled over
+    //   this.rightRef.scrollLeft -= 6750;
+    // }
   }
   //method to close the pop up
   closePop() {
@@ -72,7 +69,7 @@ class App extends Component {
   currChange(e) {
     let { popCurr } = this.state;
     const { data } = this.state;
-    if (e.target.className === style.next) {
+    if (e.target.className === "next") {
       popCurr = Number(popCurr) + 1;
     } else {
       popCurr = Number(popCurr) - 1;
@@ -97,17 +94,17 @@ class App extends Component {
     const right = '>';
     const { data, popCheck, popCurr } = this.state;
     return (
-      <div className={style.mainDiv}>
+      <div className="mainDiv">
         <button
           type="submit"
           id="left"
           onClick={this.scrollLeft}
-          className={style.leftButton}
+          className="leftButton"
         >
           {left}
         </button>
         <div
-          className={style.mainContainer}
+          className="mainContainer"
           ref={r => this.rightRef = r}
         >
           <Pictures
@@ -127,7 +124,7 @@ class App extends Component {
           type="submit"
           id="right"
           onClick={this.scrollRight}
-          className={style.rightButton}
+          className="rightButton"
         >
           {right}
         </button>
