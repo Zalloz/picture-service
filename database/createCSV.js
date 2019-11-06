@@ -25,7 +25,7 @@ const generateData = async () => {
             await new Promise(resolve => writeStream.once('drain', resolve));
         };
     };
-    postgres.query(`copy images(url) FROM '${CSVPath}' DELIMITER ',' CSV HEADER;`, (err, res) => {
+    postgres.query(`\copy images(url) FROM '${CSVPath}' DELIMITER ',' CSV HEADER;`, (err, res) => {
         if (err) {
             console.log('CSV Import error:', err);
         } else {
