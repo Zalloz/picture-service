@@ -1,0 +1,69 @@
+{
+  "name": "",
+  "version": "",
+  "description": "",
+  "author": "",
+  "license": "",
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
+  },
+  "engines": {
+    "node": ">=6.13.0"
+  },
+  "scripts": {
+    "react-dev": "webpack -d --watch",
+    "start": "node server/server",
+    "start-nodemon": "nodemon server/server.js",
+    "test": "jest --coverage",
+    "prod-build": "webpack --mode production",
+    "all": "webpack -d --watch & nodemon src/server.js"
+  },
+  "dependencies": {
+    "artillery": "^1.6.0-29",
+    "aws-sdk": "^2.434.0",
+    "babel-plugin-react-transform": "^3.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "basho-riak-client": "^2.4.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "express": "^4.16.4",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "faker": "^4.1.0",
+    "identity-obj-proxy": "^3.0.0",
+    "mongoose": "^5.4.20",
+    "mongoose-simple-random": "^0.4.1",
+    "nodemon": "^1.18.10",
+    "pg": "^7.12.1",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "react-dom-server": "0.0.5",
+    "style-loader": "^0.23.1",
+    "supertest": "^4.0.2",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.5.0",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
+    "enzyme": "^3.9.0",
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "jest": "^24.5.0",
+    "jest-css-modules": "^1.1.0",
+    "react-addons-test-utils": "^15.6.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
