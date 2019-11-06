@@ -21,7 +21,8 @@ const PORT = process.env.PORT || 8082;
 const postgres = new Client({
   user: "postgres",
   host: "ec2-18-189-189-135.us-east-2.compute.amazonaws.com",
-  database: "pictureservice"
+  database: "pictureservice",
+  password: "root"
 });
 
 postgres.connect();
