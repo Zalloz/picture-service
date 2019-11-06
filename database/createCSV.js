@@ -12,7 +12,8 @@ const CSVPath = path.join(__dirname, 'pictureSeedData.csv');
 const postgres = new Client({
     user: "postgres",
     host: "localhost",
-    database: "pictureservice"
+    database: "pictureservice",
+    password: "root"
 });
 postgres.connect();
 
