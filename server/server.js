@@ -101,7 +101,7 @@ http.createServer(function (req, res) {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Headers": "X-Requested-With"
             })
-            const reactString = ReactDOMServer.renderToString(<App data={photoArr} />)
+            const reactString = ReactDOM.renderToString(<App data={photoArr} />)
             res.end(reactString, 'utf-8')
           }
         })
