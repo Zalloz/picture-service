@@ -43,7 +43,7 @@ http.createServer(function (req, res) {
     } else {
       let photoArr = []
       let count = 0
-      let randomNumber = Math.floor(Math.random() * 16 + 1);
+      let randomNumber = 4//Math.floor(Math.random() * 16 + 1);
       for (let i = 0; i < randomNumber; i++) {
         let randomPhoto = Math.floor(Math.random() * 10000000)
         getImage(randomPhoto, (err, data) => {
