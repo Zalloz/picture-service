@@ -63,16 +63,6 @@ postgres.connect();
 //   }
 // })
 
-const publicDirectory = path.join(__dirname, 'public')
-
-const postgres = new Client({
-  user: "postgres",
-  host: "ec2-3-14-133-172.us-east-2.compute.amazonaws.com",
-  database: "formservice",
-  password: "root"
-});
-postgres.connect();
-
 function getImage(image, cb) {
   postgres.query(`select * from images where id = ${image}`, (err, res) => {
     if (err) {
