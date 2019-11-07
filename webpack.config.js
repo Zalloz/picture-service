@@ -2,7 +2,7 @@ const path = require("path");
 
 const SRC_DIR = path.join(__dirname, "client/src");
 const DIST_DIR = path.join(__dirname, "client/dist");
-
+const webpack = require("webpack")
 const nodeExternals = require("webpack-node-externals");
 
 const js = {
@@ -24,7 +24,7 @@ const jsx = {
   }
 };
 const serverConfig = {
-  mode: "development",
+  mode: "production",
   target: 'node',
   node: {
     fs: 'empty',
@@ -34,6 +34,11 @@ const serverConfig = {
   entry: {
     "server.js": path.resolve(__dirname, "server/server.js")
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"',
+    })
+  ],
   module: {
     rules: [js, jsx]
   },
@@ -44,13 +49,18 @@ const serverConfig = {
 };
 
 const clientConfig = {
-  mode: "development",
+  mode: "production",
   target: "web",
   entry: `${SRC_DIR}/index.jsx`,
   output: {
     filename: "bundle.js",
     path: DIST_DIR
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"',
+    })
+  ],
   module: {
     rules: [
       {
