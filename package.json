@@ -36,6 +36,7 @@
     "identity-obj-proxy": "^3.0.0",
     "mongoose": "^5.4.20",
     "mongoose-simple-random": "^0.4.1",
+    "newrelic": "^6.1.0",
     "nodemon": "^1.18.10",
     "pg": "^7.12.1",
     "react": "^16.8.5",
