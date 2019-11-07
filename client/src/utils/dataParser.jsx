@@ -7,14 +7,14 @@ const listParser = (data, fn) => {
   const newData = [...data];
   const first = newData.shift();
   let index = 0;
-  const list = newData.reduce((acc, curr) => {
+  const list = newData.reduce((acc, curr, idx) => {
     acc.push((
-      <img onClick={fn} key={curr._id} id={index += 1} src={curr.url} alt="house" className="smallImages" />
+      <img onClick={fn} key={idx} id={index += 1} src={curr.url} alt="house" className="smallImages" />
     ));
     return acc;
   }, []);
   list.unshift((
-    <img onClick={fn} key={first._id} id={0} src={first.url} className="firstImage" alt="house" />
+    <img onClick={fn} key={Math.floor(Math.random() * 50000 + 100)} id={0} src={first.url} className="firstImage" alt="house" />
   ));
   return list;
 };

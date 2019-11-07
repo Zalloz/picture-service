@@ -21,43 +21,12 @@ class App extends Component {
     this.closePop = this.closePop.bind(this);
     this.houseView = this.houseView.bind(this);
   }
-  //fetching links on mount
-  // componentWillMount() {
 
-  //   fetch('http://picturescomponent-env.rvmps3ehip.us-east-2.elasticbeanstalk.com/links', {
-  //     method: 'GET',
-  //   }).then(res => res.json())
-  //     .then((newData) => {
-  //       this.setState({
-  //         data: newData,
-  //       });
-  //     }).catch(err => console.log(err));
-  // }
-  //method to refresh the picture component when other microservices trigger it with global event
   houseView() {
-    // fetch('http://picturescomponent-env.rvmps3ehip.us-east-2.elasticbeanstalk.com/links', {
-    //   method: 'GET',
-    // }).then(res => res.json())
-    //   .then((newData) => {
-    //     this.setState({
-    //       data: newData,
-    //     });
-    //   }).catch(err => console.log(err));
+  }
+  popCurrStart(e) {
   }
 
-  //method to set the index of where the pop up will start
-  popCurrStart(e) {
-    // if (window.innerWidth >= 995) {
-    //   this.setState({
-    //     popCurr: e.target.id,
-    //     popCheck: true,
-    //     prevSpot: this.rightRef.scrollLeft,
-    //   });
-    //   //this moves div to pop up if it is scrolled over
-    //   this.rightRef.scrollLeft -= 6750;
-    // }
-  }
-  //method to close the pop up
   closePop() {
     const { prevSpot } = this.state;
     this.rightRef.scrollLeft += prevSpot;
