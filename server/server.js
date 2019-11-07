@@ -108,7 +108,7 @@ http.createServer(function (req, res) {
       }
     }
   }
-})
+
     function hostJsOrCss() {
       fs.readFile(req.url === '/' ? publicDirectory + '/index.html' : publicDirectory + req.url, (err, content) => {
 
@@ -123,5 +123,5 @@ http.createServer(function (req, res) {
 
 
 
-  app.listen(PORT, () => {
+  }).listen(PORT, () => {
   });
