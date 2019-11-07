@@ -93,7 +93,7 @@ http.createServer(function (req, res) {
           count++
           if (err) {
           } else {
-            agents.push(data.rows[0])
+            photoArr.push(data.rows[0])
           }
           if (count === randomNumber) {
             res.writeHead(200, {
