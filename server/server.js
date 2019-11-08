@@ -39,12 +39,10 @@ function getImage(image, cb) {
           if (err) {
             cb(err, null)
           } else {
+            cb(null, res.rows[0])
             redisClient.set(image.toString(), JSON.stringify(res.rows[0]), function(err, success) {
               if (err) {
-                cb(err, null)
                 console.log(err)
-              } else {
-                cb(null, res.rows[0])
               }
             });
           }
