@@ -39,7 +39,7 @@ function getImage(image, cb) {
           if (err) {
             cb(err, null)
           } else {
-            redisClient.set(image.toString(), function(err, success) {
+            redisClient.set(image.toString(), JSON.stringify(res), function(err, success) {
               if (err) {
                 cb(err, null)
                 console.log(err)
@@ -49,6 +49,8 @@ function getImage(image, cb) {
             });
           }
         })
+      } else {
+        cb(JSON.parse(reply, null))
       }
     }
   })
