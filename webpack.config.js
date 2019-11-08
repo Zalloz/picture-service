@@ -24,7 +24,7 @@ const jsx = {
   }
 };
 const serverConfig = {
-  mode: "production",
+  mode: "development",
   target: 'node',
   node: {
     fs: 'empty',
@@ -36,7 +36,7 @@ const serverConfig = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"',
+      'process.env.NODE_ENV': '"development"',
     })
   ],
   module: {
@@ -49,7 +49,7 @@ const serverConfig = {
 };
 
 const clientConfig = {
-  mode: "production",
+  mode: "development",
   target: "web",
   entry: `${SRC_DIR}/index.jsx`,
   output: {
@@ -58,7 +58,7 @@ const clientConfig = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"',
+      'process.env.NODE_ENV': '"development"',
     })
   ],
   module: {
