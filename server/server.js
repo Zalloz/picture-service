@@ -4,11 +4,11 @@ const fs = require('fs');
 const path = require('path');
 const { Client } = require('pg');
 const ReactDOM = require("react-dom/server");
-const redis = require("redis"),
+const redis = require("redis");
 
 const redisClient = redis.createClient({
   host: "ec2-18-222-125-100.us-east-2.compute.amazonaws.com",
-  port: "6379",
+  port: "6379"
 });
 
 
@@ -27,7 +27,7 @@ const postgres = new Client({
 });
 
 postgres.connect();
-
+console.log('got here')
 function getImage(image, cb) {
   redisClient.get(image.toString(), function(err, reply) {
     if (err) {
