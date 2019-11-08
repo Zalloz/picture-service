@@ -39,18 +39,18 @@ function getImage(image, cb) {
           if (err) {
             cb(err, null)
           } else {
-            redisClient.set(image.toString(), JSON.stringify(res), function(err, success) {
+            redisClient.set(image.toString(), res.rows[0], function(err, success) {
               if (err) {
                 cb(err, null)
                 console.log(err)
               } else {
-                cb(null, res)
+                cb(null, res.rows[0])
               }
             });
           }
         })
       } else {
-        cb(JSON.parse(reply, null))
+        cb(null, reply)
       }
     }
   })
@@ -76,7 +76,7 @@ http.createServer(function (req, res) {
           count++
           if (err) {
           } else {
-            photoArr.push(data.rows[0])
+            photoArr.push(data)
           }
           if (count === randomNumber) {
             res.writeHead(200, {
