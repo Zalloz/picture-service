@@ -27,7 +27,7 @@ const postgres = new Client({
 });
 
 postgres.connect();
-console.log('got here')
+
 function getImage(image, cb) {
   redisClient.get(image.toString(), function(err, reply) {
     if (err) {
@@ -50,7 +50,6 @@ function getImage(image, cb) {
           }
         })
       }
-      console.log(reply)
     }
   })
 }
