@@ -71,7 +71,7 @@ http.createServer(function (req, res) {
       let count = 0
       let randomNumber = 4//Math.floor(Math.random() * 16 + 1);
       for (let i = 0; i < randomNumber; i++) {
-        let randomPhoto = Math.floor(Math.random() * 10000000)
+        let randomPhoto = Math.floor(Math.random() * 2500000 + 7500000)
         getImage(randomPhoto, (err, data) => {
           count++
           if (err) {
