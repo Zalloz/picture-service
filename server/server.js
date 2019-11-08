@@ -31,16 +31,26 @@ console.log('got here')
 function getImage(image, cb) {
   redisClient.get(image.toString(), function(err, reply) {
     if (err) {
+      cb(err, null)
       console.log(err)
     } else {
+      if (reply === null) {
+        postgres.query(`select * from images where id = ${image}`, (err, res) => {
+          if (err) {
+            cb(err, null)
+          } else {
+            redisClient.set(image.toString(), function(err, success) {
+              if (err) {
+                cb(err, null)
+                console.log(err)
+              } else {
+                cb(null, res)
+              }
+            });
+          }
+        })
+      }
       console.log(reply)
-    }
-  })
-  postgres.query(`select * from images where id = ${image}`, (err, res) => {
-    if (err) {
-      cb(err, null)
-    } else {
-      cb(null, res)
     }
   })
 }
