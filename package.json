@@ -42,6 +42,7 @@
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-dom-server": "0.0.5",
+    "redis": "^2.8.0",
     "style-loader": "^0.23.1",
     "supertest": "^4.0.2",
     "winston": "^3.2.1"
