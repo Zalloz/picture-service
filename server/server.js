@@ -29,7 +29,7 @@ const postgres = new Client({
 postgres.connect();
 
 function getImage(image, cb) {
-  redisClient.get(image.toString(), function(err, reply) {
+  redisClient.get(image.toString(), function (err, reply) {
     if (err) {
       cb(err, null)
       console.log(err)
@@ -40,7 +40,7 @@ function getImage(image, cb) {
             cb(err, null)
           } else {
             cb(null, res.rows[0])
-            redisClient.set(image.toString(), JSON.stringify(res.rows[0]), function(err, success) {
+            redisClient.set(image.toString(), JSON.stringify(res.rows[0]), function (err, success) {
               if (err) {
                 console.log(err)
               }
@@ -56,36 +56,44 @@ function getImage(image, cb) {
 
 http.createServer(function (req, res) {
   if (req.method === 'GET') {
-    let contentType = 'text/html';
-    let extension = path.extname(req.url)
-    if (extension === '.js') {
-      contentType = 'text/javascript'
-      hostJsOrCss()
-    } else if (extension === '.css') {
-      contentType = 'text/css'
-      hostJsOrCss()
+    if (req.url === `/loaderio-b065f3c5c19458f32e5b0af7b3c50eb5/`) {
+      let veryifyPath = path.join(__dirname, `loaderio-b065f3c5c19458f32e5b0af7b3c50eb5/`)
+      fs.readFile(veryifyPath, (err, verifyFile) => {
+        res.end('loaderio-b065f3c5c19458f32e5b0af7b3c50eb5', 'utf-8')
+        return
+      })
     } else {
-      let photoArr = []
-      let count = 0
-      let randomNumber = 4//Math.floor(Math.random() * 16 + 1);
-      for (let i = 0; i < randomNumber; i++) {
-        let randomPhoto = Math.floor(Math.random() * 2500000 + 7500000)
-        getImage(randomPhoto, (err, data) => {
-          count++
-          if (err) {
-          } else {
-            photoArr.push(data)
-          }
-          if (count === randomNumber) {
-            res.writeHead(200, {
-              'Content-Type': 'text/html',
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Headers": "X-Requested-With"
-            })
-            const reactString = ReactDOM.renderToString(<App data={photoArr} />)
-            res.end(reactString, 'utf-8')
-          }
-        })
+      let contentType = 'text/html';
+      let extension = path.extname(req.url)
+      if (extension === '.js') {
+        contentType = 'text/javascript'
+        hostJsOrCss()
+      } else if (extension === '.css') {
+        contentType = 'text/css'
+        hostJsOrCss()
+      } else {
+        let photoArr = []
+        let count = 0
+        let randomNumber = 4//Math.floor(Math.random() * 16 + 1);
+        for (let i = 0; i < randomNumber; i++) {
+          let randomPhoto = Math.floor(Math.random() * 2500000 + 7500000)
+          getImage(randomPhoto, (err, data) => {
+            count++
+            if (err) {
+            } else {
+              photoArr.push(data)
+            }
+            if (count === randomNumber) {
+              res.writeHead(200, {
+                'Content-Type': 'text/html',
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "X-Requested-With"
+              })
+              const reactString = ReactDOM.renderToString(<App data={photoArr} />)
+              res.end(reactString, 'utf-8')
+            }
+          })
+        }
       }
     }
   }
