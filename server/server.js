@@ -56,7 +56,6 @@ function getImage(image, cb) {
 
 http.createServer(function (req, res) {
   if (req.method === 'GET') {
-    res.end('got here')
     if (req.url === `/loaderio-b065f3c5c19458f32e5b0af7b3c50eb5/`) {
       let veryifyPath = path.join(__dirname, `loaderio-b065f3c5c19458f32e5b0af7b3c50eb5/`)
       fs.readFile(veryifyPath, (err, verifyFile) => {
