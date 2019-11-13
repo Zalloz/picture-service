@@ -37,3 +37,32 @@ npm install -g webpack
 npm install
 ```
 
+## Creating new Redis EC2 Instance
+
+sudo yum update
+sudo yum -y install gcc make # install GCC compiler
+cd /usr/local/src
+sudo wget http://download.redis.io/redis-stable.tar.gz
+sudo tar xvzf redis-stable.tar.gz
+sudo rm -f redis-stable.tar.gz
+cd redis-stable
+sudo make distclean
+sudo make
+sudo yum install -y tcl
+sudo make test
+sudo cp src/redis-server /usr/local/bin/
+sudo cp src/redis-cli /usr/local/bin/
+cd /usr/local/src
+cd redis-stable/
+sudo cp redis.conf /etc/redis.conf
+sudo vim /etc/redis.conf
+sudo /usr/local/bin/redis-server /etc/redis.conf --daemonize yes
+
+
+sudo su
+sudo echo never > /sys/kernel/mm/transparent_hugepage/enabled
+sudo sysctl vm.overcommit_memory=1
+sysctl -w net.core.somaxconn=1024
+sudo sysctl -w fs.file-max=100032
+sysctl -p
+
