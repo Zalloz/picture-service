@@ -15,8 +15,7 @@ let countSuccess = 0;
 const maxTotal = 10000000;
 
 const populate = async () => {
-  console.log("hot gear")
-  for (let i = 7500000; i <= 1000000; i++) {
+  for (let i = 7500000; i <= 10000000; i++) {
       const hGET = await new Promise((resolve, reject) => {
           redisClient.get(i.toString(), (err, response) => {
               if (err) {
