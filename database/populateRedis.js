@@ -10,13 +10,12 @@ const redisClient = redis.createClient({
   port: "6379"
 });
 
-const agentTypes = ['listing', 'premier'];
-
 let countFail = 0;
 let countSuccess = 0;
 const maxTotal = 10000000;
 
 const populate = async () => {
+  console.log("hot gear")
   for (let i = 7500000; i <= 1000000; i++) {
       const hGET = await new Promise((resolve, reject) => {
           redisClient.get(i.toString(), (err, response) => {
