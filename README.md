@@ -62,7 +62,7 @@ sudo /usr/local/bin/redis-server /etc/redis.conf --daemonize yes
 sudo su
 sudo echo never > /sys/kernel/mm/transparent_hugepage/enabled
 sudo sysctl vm.overcommit_memory=1
-sysctl -w net.core.somaxconn=1024
+sysctl -w net.core.somaxconn=65535
 sudo sysctl -w fs.file-max=100032
 sysctl -p
 

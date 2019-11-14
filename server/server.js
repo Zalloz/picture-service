@@ -7,7 +7,7 @@ const ReactDOM = require("react-dom/server");
 const redis = require("redis");
 
 const redisClient = redis.createClient({
-  host: "ec2-18-224-3-115.us-east-2.compute.amazonaws.com",
+  host: "ec2-18-222-87-5.us-east-2.compute.amazonaws.com",
   port: "6379"
 });
 
