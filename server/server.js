@@ -54,12 +54,15 @@ function getImage(image, cb) {
   })
 }
 
+// service loader key (no nginx): loaderio-b065f3c5c19458f32e5b0af7b3c50eb5
+// key with nginx: loaderio-372a02b594c312c1ccfcf251ba4f8f9c
+
 http.createServer(function (req, res) {
   if (req.method === 'GET') {
-    if (req.url === `/loaderio-b065f3c5c19458f32e5b0af7b3c50eb5/`) {
-      let veryifyPath = path.join(__dirname, `loaderio-b065f3c5c19458f32e5b0af7b3c50eb5/`)
+    if (req.url === `/loaderio-372a02b594c312c1ccfcf251ba4f8f9c/`) {
+      let veryifyPath = path.join(__dirname, `loaderio-372a02b594c312c1ccfcf251ba4f8f9c`)
       fs.readFile(veryifyPath, (err, verifyFile) => {
-        res.end('loaderio-b065f3c5c19458f32e5b0af7b3c50eb5', 'utf-8')
+        res.end('loaderio-372a02b594c312c1ccfcf251ba4f8f9c', 'utf-8')
         return
       })
     } else {
