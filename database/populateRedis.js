@@ -35,7 +35,7 @@ const populate = async () => {
           if (i % 10000 === 0) {
               console.log('On key#:', i)
           }
-          const image = `https://s3-us-west-2.amazonaws.com/images/${faker.random.number({ min: 1, max: 100 })}.jpg`;
+          const image = `https://s3-us-west-1.amazonaws.com/photosformockzalloproject/${faker.random.number({ min: 1, max: 100 })}.jpg`;
           const obj = {
             image
           }
