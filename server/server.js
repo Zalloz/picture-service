@@ -59,7 +59,6 @@ function getImage(image, cb) {
 
 http.createServer(function (req, res) {
   if (req.method === 'GET') {
-    console.log(req.url)
     if (req.url === `/loaderio-372a02b594c312c1ccfcf251ba4f8f9c/`) {
       res.end('loaderio-372a02b594c312c1ccfcf251ba4f8f9c', 'utf-8');
       return;
