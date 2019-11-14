@@ -60,11 +60,8 @@ function getImage(image, cb) {
 http.createServer(function (req, res) {
   if (req.method === 'GET') {
     if (req.url === `/loaderio-372a02b594c312c1ccfcf251ba4f8f9c/`) {
-      let veryifyPath = path.join(__dirname, `loaderio-372a02b594c312c1ccfcf251ba4f8f9c`)
-      fs.readFile(veryifyPath, (err, verifyFile) => {
-        res.end('loaderio-372a02b594c312c1ccfcf251ba4f8f9c', 'utf-8')
-        return
-      })
+      res.end('loaderio-372a02b594c312c1ccfcf251ba4f8f9c', 'utf-8');
+      return;
     } else {
       let contentType = 'text/html';
       let extension = path.extname(req.url)
