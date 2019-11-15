@@ -85,6 +85,7 @@ http.createServer(function (req, res) {
           getImage(randomPhoto, (err, data) => {
             count++
             if (err) {
+              console.log('getImage cb: ', err)
             } else {
               photoArr.push(data)
             }
