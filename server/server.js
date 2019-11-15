@@ -32,7 +32,6 @@ function getImage(image, cb) {
   redisClient.get(image.toString(), function (err, reply) {
     if (err) {
       cb(err, null)
-      console.log(err)
     } else {
       if (reply === null) {
         postgres.query(`select * from images where id = ${image}`, (err, res) => {
@@ -42,7 +41,7 @@ function getImage(image, cb) {
             cb(null, res.rows[0])
             redisClient.set(image.toString(), JSON.stringify(res.rows[0]), function (err, success) {
               if (err) {
-                console.log(err)
+                cb(err, null)
               }
             });
           }
@@ -85,7 +84,7 @@ http.createServer(function (req, res) {
           getImage(randomPhoto, (err, data) => {
             count++
             if (err) {
-              console.log('getImage cb: ', err)
+              console.error('getImage cb: ', err)
             } else {
               photoArr.push(data)
             }
