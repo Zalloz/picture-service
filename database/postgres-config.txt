@@ -1,0 +1,125 @@
+Last login: Fri Nov 15 17:04:52 on ttys011
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+~/aws/pictureservice » ls                                                                                                                                                                              michaelcowden@Michaels-MacBook-Pro-2
+db-key2.pem                nginx2.pem                 pic-service3.pem           pic-service6.pem           proxy2.pem                 redis-cache2.pem           redis-cache5.pem
+db-key3.pem                nginx3.pem                 pic-service4.pem           picture-service-db-key.pem proxy3.pem                 redis-cache3.pem
+mcowden-key.pem            pic-service2.pem           pic-service5.pem           picture-service-proxy.pem  redis-cache.pem            redis-cache4.pem
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+~/aws/pictureservice » ssh -i picture-service-db-key.pem "ec2-user@ec2-18-189-189-135.us-east-2.compute.amazonaws.com                                                                                  michaelcowden@Michaels-MacBook-Pro-2
+\
+\
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+~/aws/pictureservice » ssh -i picture-service-db-key.pem "ec2-user@ec2-18-189-189-135.us-east-2.compute.amazonaws.com                                                                                  michaelcowden@Michaels-MacBook-Pro-2
+
+\
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+~/aws/pictureservice » ssh -i "picture-service-db-key.pem" ec2-user@ec2-18-189-189-135.us-east-2.compute.amazonaws.com                                                                                 michaelcowden@Michaels-MacBook-Pro-2
+
+Last login: Fri Nov  8 22:39:53 2019 from 64.125.67.66.gatespeed.com
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+5 package(s) needed for security, out of 11 available
+Run "sudo yum update" to apply all updates.
+[ec2-user@ip-172-31-5-207 ~]$ ls
+picture-service
+[ec2-user@ip-172-31-5-207 ~]$ sudo vim /var/lib/pgsql/data/postgresql.conf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        # strings
+lc_monetary = 'en_US.UTF-8'                     # locale for monetary formatting
+lc_numeric = 'en_US.UTF-8'                      # locale for number formatting
+lc_time = 'en_US.UTF-8'                         # locale for time formatting
+
+# default configuration for text search
+default_text_search_config = 'pg_catalog.english'
+
+# - Other Defaults -
+
+#dynamic_library_path = '$libdir'
+#local_preload_libraries = ''
+
+
+#------------------------------------------------------------------------------
+# LOCK MANAGEMENT
+#------------------------------------------------------------------------------
+
+#deadlock_timeout = 1s
+#max_locks_per_transaction = 64         # min 10
+                                        # (change requires restart)
+# Note:  Each lock table slot uses ~270 bytes of shared memory, and there are
+# max_locks_per_transaction * (max_connections + max_prepared_transactions)
+# lock table slots.
+#max_pred_locks_per_transaction = 64    # min 10
+                                        # (change requires restart)
+
+
+#------------------------------------------------------------------------------
+# VERSION/PLATFORM COMPATIBILITY
+#------------------------------------------------------------------------------
+
+# - Previous PostgreSQL Versions -
+
+#array_nulls = on
+#backslash_quote = safe_encoding        # on, off, or safe_encoding
+#default_with_oids = off
+#escape_string_warning = on
+#lo_compat_privileges = off
+#quote_all_identifiers = off
+#sql_inheritance = on
+#standard_conforming_strings = on
+#synchronize_seqscans = on
+
+# - Other Platforms and Clients -
+
+#transform_null_equals = off
+
+
+#------------------------------------------------------------------------------
+# ERROR HANDLING
+#------------------------------------------------------------------------------
+
+#exit_on_error = off                    # terminate session on any error?
+#restart_after_crash = on               # reinitialize after backend crash?
+
+
+#------------------------------------------------------------------------------
+# CUSTOMIZED OPTIONS
+#------------------------------------------------------------------------------
+
+# Add settings for extensions here
